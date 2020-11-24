@@ -1,0 +1,66 @@
+{
+  "name": "dcms-ui",
+  "version": "1.0.0",
+  "description": "DCMS前端组件库",
+  "author": "dorisoy",
+  "license": "ISC",
+  "main": "packages/index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "cm": "rimraf node_modules && rimraf dist",
+    "cc": "rimraf node_modules/.cache",
+    "i": "cd ./script && npm_install.ps1",
+    "up": "cd ./script && npm_update.ps1",
+    "pub": "cd ./script && npm_publish.ps1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "axios": "^0.19.2",
+    "core-js": "^3.3.2",
+    "dayjs": "^1.8.22",
+    "element-ui": "^2.12.0",
+    "netmodular-ui-map": "^1.0.3",
+    "nprogress": "^0.2.0",
+    "qs": "^6.9.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "screenfull": "^4.2.1",
+    "store": "^2.0.12",
+    "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.1",
+    "vue-router": "^3.1.6",
+    "vuedraggable": "^2.23.0",
+    "vuex": "^3.1.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-plugin-router": "^4.2.3",
+    "@vue/cli-plugin-vuex": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "babel-eslint": "^10.1.0",
+    "codemirror": "^5.52.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.18.2",
+    "raw-loader": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.2",
+    "sass-loader": "^8.0.2",
+    "vue-highlightjs": "^1.3.3",
+    "vue-template-compiler": "^2.6.10",
+    "vuep": "^0.8.1"
+  },
+  "vetur": {
+    "tags": "packages/vuter/tags.json",
+    "attributes": "packages/vuter/attributes.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dorisoy/DCMS.UI"
+  }
+}

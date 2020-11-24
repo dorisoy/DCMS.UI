@@ -1,0 +1,38 @@
+/*主题色*/
+$pretty-theme-color: rgb(3, 169, 244);
+$pretty-theme-color-transpart: #ecf5ff;
+/*header*/
+$pretty-header-background-color: $pretty-theme-color;
+$pretty-header-color: #fff;
+
+/*面包屑*/
+$pretty-breadcrumb-color: #e4e7ed;
+$pretty-breadcrumb-separator-color: #dcdfe6;
+$pretty-breadcrumb-link-color: #fff;
+
+/*main*/
+$pretty-main-background-color: #f0f0f0;
+
+/*sidebar*/
+$pretty-sidebar-background-color: #f9fafc;
+
+/*logo*/
+$pretty-logo-box-background-color: $pretty-theme-color;
+$pretty-logo-text-color: #fff;
+
+/*menus*/
+$pretty-menus-background-color: #fff;
+$pretty-menus-menu-color: #444;
+
+$pretty-menus-menu-active-background-color: $pretty-theme-color-transpart;
+$pretty-menus-menu-active-color: $pretty-theme-color;
+
+$pretty-menus-menu-hover-background-color: $pretty-theme-color-transpart;
+$pretty-menus-menu-hover-color: $pretty-theme-color;
+
+/*树*/
+$pretty-tree-color: #fff;
+$pretty-tree-background-color: $pretty-theme-color;
+
+/*对话框*/
+$pretty-dialog-icon-color: #fff;

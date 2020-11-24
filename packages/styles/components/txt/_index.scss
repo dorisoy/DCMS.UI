@@ -1,0 +1,17 @@
+#{$prefix}txt {
+    padding: 2px 0;
+    position: relative;
+    line-height: 20px;
+    box-sizing: border-box;
+
+    &-icon {
+        padding-left: 21px;
+
+        #{$prefix}icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 20px;
+        }
+    }
+}
