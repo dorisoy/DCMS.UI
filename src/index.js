@@ -1,12 +1,12 @@
 import store from './store'
 import routes from './routes'
 import login from './views/login/index'
-import NetModularMap from 'netmodular-ui-map'
+import dcmsMap from 'dcms-ui-map'
 export default {
   module: {
-    name: 'nm-module-admin',
+    name: 'dcms-module-admin',
     code: 'admin',
-    version: '1.0.0',
+    version: '1.0.2',
     description: '权限管理'
   },
   routes,
@@ -18,6 +18,6 @@ export default {
     }
   ],
   callback({ Vue }) {
-    NetModularMap.init(Vue, { ak: 'q96f4kWdHsVg1Y8tlclqYvrlpdnhlz5l' })
+    dcmsMap.init(Vue, { ak: 'q96f4kWdHsVg1Y8tlclqYvrlpdnhlz5l' })
   }
 }

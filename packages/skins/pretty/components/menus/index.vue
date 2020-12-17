@@ -31,22 +31,22 @@ export default {
   components: { MenuItem },
   computed: {
     ...mapState('app/account', ['menus', 'routeMenus']),
-    ...mapState('app/config', { uniqueOpened: s => s.component.menu.uniqueOpened }),
+    ...mapState('app/config', { uniqueOpened: (s) => s.component.menu.uniqueOpened }),
     ...mapState('app/page', ['current']),
-    ...mapState('app/skins/pretty/sidebar', ['collapse']),
+    //...mapState('app/skins/pretty/sidebar', ['collapse']),
+    ...mapState('app/config', { collapse: (s) => s.component.menu.defaultExpanded }),
     active: {
       get() {
         if (this.current.name && this.routeMenus) {
           let routeMenu = this.routeMenus.get(this.current.name)
-
           if (routeMenu) {
             return routeMenu.menu.id
           }
         }
         return '-1'
       },
-      set() {}
-    }
+      set() {},
+    },
   },
   methods: {
     go(menu, e) {
@@ -54,7 +54,7 @@ export default {
         return
       }
       open(this.$router, menu)
-    }
-  }
+    },
+  },
 }
 </script>

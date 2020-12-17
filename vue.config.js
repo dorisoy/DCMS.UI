@@ -12,7 +12,7 @@ module.exports = {
     port: 6220
   },
   publicPath: '/ui',
-  transpileDependencies: ['netmodular.*', 'element-ui'],
+  transpileDependencies: ['dcms.*', 'element-ui'],
   configureWebpack() {
     let config = {
       module: {

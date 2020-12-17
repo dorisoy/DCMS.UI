@@ -22,9 +22,9 @@ export default {
   props: {
     parentIndex: {
       type: String,
-      default: ''
+      default: '',
     },
-    menu: {}
+    menu: {},
   },
   methods: {
     ...mapActions('app/dialog-menu', { dialogMenuOpen: 'open' }),
@@ -32,7 +32,6 @@ export default {
       if (e.$el.classList.contains('is-active')) {
         return
       }
-
       open(this.$router, menu)
     },
     getIndex(index) {
@@ -40,7 +39,7 @@ export default {
         return index + ''
       }
       return this.parentIndex + '-' + index
-    }
-  }
+    },
+  },
 }
 </script>

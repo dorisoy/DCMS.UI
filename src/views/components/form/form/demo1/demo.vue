@@ -58,32 +58,32 @@ export default {
       form1: {
         model: {
           name: '',
-          age: 0
+          age: 0,
         },
         rules: {
-          name: [{ required: true, message: '请输入姓名' }]
+          name: [{ required: true, message: '请输入姓名' }],
         },
         action() {
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             resolve()
           })
-        }
+        },
       },
       form2: {
         model: {
           name: '',
-          age: 0
+          age: 0,
         },
         rules: {
-          name: [{ required: true, message: '请输入姓名' }]
+          name: [{ required: true, message: '请输入姓名' }],
         },
         action() {
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             resolve()
           })
-        }
-      }
+        },
+      },
     }
-  }
+  },
 }
 </script>

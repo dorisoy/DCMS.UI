@@ -7,11 +7,11 @@
         <div class="nm-logo-text">{{ title }}</div>
       </section>
       <!--折叠按钮-->
-      <a class="nm-sidebar-toggle-btn" @click.prevent="sidebarToggle">
+      <!-- <a class="nm-sidebar-toggle-btn" @click.prevent="sidebarToggle">
         <nm-icon :name="sidebarCollapse ? 'indent-left' : 'indent-right'" />
-      </a>
+      </a> -->
       <!--面包屑-->
-      <breadcrumb />
+      <breadcrumb style="margin-left:10px" />
     </section>
     <section class="nm-header-right">
       <!--工具栏-->
@@ -28,11 +28,12 @@ export default {
   components: { Breadcrumb },
   computed: {
     ...mapGetters('app/config', ['logoUrl']),
-    ...mapState('app/config', { title: s => s.system.title }),
-    ...mapState('app/skins/pretty/sidebar', { sidebarCollapse: 'collapse' })
+    ...mapState('app/config', { title: (s) => s.system.title }),
+    //...mapState('app/config', { defaultExpanded: (s) => s.component.menu.defaultExpanded }),
+    ...mapState('app/skins/pretty/sidebar', { sidebarCollapse: 'collapse' }),
   },
   methods: {
-    ...mapActions('app/skins/pretty/sidebar', { sidebarToggle: 'toggle' })
-  }
+    ...mapActions('app/skins/pretty/sidebar', { sidebarToggle: 'toggle' }),
+  },
 }
 </script>

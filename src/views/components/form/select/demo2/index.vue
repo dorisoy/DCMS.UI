@@ -12,7 +12,7 @@
         v-highlightjs="
           `
         <script>
-        import { mixins } from 'netmodular-ui'
+        import { mixins } from 'dcms-ui'
         export default {
           mixins: [mixins.select],
           data() {

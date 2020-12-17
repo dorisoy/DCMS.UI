@@ -1,6 +1,7 @@
 import _ from 'lodash'
 export default {
   namespaced: true,
+  //状态存储
   state: {
     system: {
       /** 标题 */
@@ -46,7 +47,9 @@ export default {
       //菜单
       menu: {
         //是否只能打开一个菜单
-        uniqueOpened: false
+        uniqueOpened: false,
+        //侧栏是否默认展开
+        defaultExpanded:false
       },
       //对话框
       dialog: {
@@ -77,16 +80,21 @@ export default {
       customCss: null
     }
   },
+  //相当于computed
   getters: {
+    //获取logot
     logoUrl: s => {
       return s.system.logo || './images/logo.png'
     },
+    //获取用户信息页(路由名称)
     userPage: s => {
       return s.system.userPage || 'userinfo'
     }
   },
+  //通过dispatch调用action
   actions: {
     async init({ commit, dispatch }, { config, system, pages }) {
+      //action通过commit来触发mutation
       commit('init', config)
       // 配置页面信息
       await dispatch('app/system/init', { system, pages }, { root: true })

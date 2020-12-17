@@ -5,6 +5,7 @@
     <nm-button type="warning" text="可全屏" @click="dialog2.visible = true" />
     <nm-button text="点击模态框关闭" @click="dialog3.visible = true" />
     <nm-button text="可拖拽" @click="dialog4.visible = true" />
+    <nm-button text="Loading加载" @click="showLoading()" />
 
     <nm-dialog v-bind="dialog" :visible.sync="dialog.visible">
       <el-alert title="简单对话框" type="success"></el-alert>
@@ -28,6 +29,8 @@
     <nm-dialog v-bind="dialog4" :visible.sync="dialog4.visible">
       <el-alert title="通过 draggable 属性可启用拖拽功能" type="success"></el-alert>
     </nm-dialog>
+
+
   </nm-box>
 </template>
 <script>
@@ -69,6 +72,11 @@ export default {
         visible: false
       }
     }
+  },
+   methods: {
+    showLoading() {
+      this._openLoading('请稍后...')
+    },
   }
 }
 </script>

@@ -11,7 +11,8 @@ import { mapState } from 'vuex'
 export default {
   components: { NmMenus },
   computed: {
-    ...mapState('app/skins/pretty/sidebar', ['collapse'])
-  }
+    //...mapState('app/skins/pretty/sidebar', ['collapse']),
+    ...mapState('app/config', { collapse: (s) => s.component.menu.defaultExpanded }),
+  },
 }
 </script>

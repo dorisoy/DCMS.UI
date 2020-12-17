@@ -3,13 +3,13 @@ const getUI = () => {
     resolve({
       system: {
         /** 标题 */
-        title: 'NetModular前端文档',
+        title: 'DCMS.UI前端文档',
         /** logo */
         logo: '',
         /** 用户信息页(路由名称) */
         userPage: 'userinfo',
         /** 版权声明 */
-        copyright: '版权所有：尼古拉斯·老李 | 用代码改变世界 | Powered by .NET Core 3.1.0 on Linux'
+        copyright: '版权所有 © DCMS | 华润雪花啤酒中国有限公司（西安）分公司'
       },
       /**权限配置 */
       permission: {
@@ -41,7 +41,9 @@ const getUI = () => {
         //菜单
         menu: {
           //是否只能打开一个菜单
-          uniqueOpened: true
+          uniqueOpened: true,
+          //侧栏是否默认展开
+          defaultExpanded:false
         },
         //对话框
         dialog: {
