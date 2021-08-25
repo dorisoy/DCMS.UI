@@ -22,30 +22,31 @@ export default {
         action: this.query,
         rowKey: 'id',
         treeProps: { children: 'children', hasChildren: 'hasChildren' },
+        smallPagination: true,
         model: {
-          name: ''
+          name: '',
         },
         cols: [
           {
             name: 'id',
             label: '编号',
-            show: false
+            show: false,
           },
           {
             name: 'name',
-            label: '姓名'
+            label: '姓名',
           },
           {
             name: 'age',
-            label: '年龄'
+            label: '年龄',
           },
           {
             name: 'birthday',
             label: '出生日期',
-            format: 'YYYY年MM月DD日'
-          }
-        ]
-      }
+            format: 'YYYY年MM月DD日',
+          },
+        ],
+      },
     }
   },
   methods: {
@@ -62,29 +63,29 @@ export default {
               id: 31,
               age: 29,
               birthday: '2016-05-01',
-              name: '王小虎'
+              name: '王小虎',
             },
             {
               id: 32,
               age: 78,
               birthday: '2016-05-01',
-              name: '王小虎'
-            }
-          ]
+              name: '王小虎',
+            },
+          ],
         },
-        { id: 3, name: '王五', age: 26, birthday: '1991-1-8' }
+        { id: 3, name: '王五', age: 26, birthday: '1991-1-8' },
       ]
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         resolve({
           rows,
-          total: 3
+          total: 3,
         })
       })
     },
     remove() {},
     onSuccess() {
       this.query()
-    }
-  }
+    },
+  },
 }
 </script>

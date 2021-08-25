@@ -1,35 +1,14 @@
 <template>
   <section :class="class_" v-loading="showLoading" :element-loading-text="loadingText || loadingText_" :element-loading-background="loadingBackground" :element-loading-spinner="loadingSpinner">
     <!--header-->
-    <query-header
-      v-if="!noHeader"
-      :title="title"
-      :icon="icon"
-      :no-fullscreen="noFullscreen"
-      :fullscreen="fullscreen"
-      :no-refresh="noRefresh"
-      :export-enabled="exportOptions_.enabled && exportOptions_.btnLocation !== 'querybar'"
-      :exportBtnCode="exportOptions_.btnCode"
-    >
+    <query-header v-if="!noHeader" :title="title" :icon="icon" :no-fullscreen="noFullscreen" :fullscreen="fullscreen" :no-refresh="noRefresh" :export-enabled="exportOptions_.enabled && exportOptions_.btnLocation !== 'querybar'" :exportBtnCode="exportOptions_.btnCode">
       <template v-slot:toolbar>
         <slot name="header-toolbar" :total="total" :selection="selection" />
       </template>
     </query-header>
 
     <!--查询栏-->
-    <querybar
-      ref="querybar"
-      v-if="!noQuerybar"
-      :model="model"
-      :rules="rules"
-      :input-width="inputWidth"
-      :advanced="advanced"
-      :no-search="noSearch"
-      :no-reset="noReset"
-      :export-enabled="exportOptions_.enabled && exportOptions_.btnLocation === 'querybar'"
-      :export-btn-code="exportOptions_.btnCode"
-      @reset="onQueryBarReset"
-    >
+    <querybar ref="querybar" v-if="!noQuerybar" :model="model" :rules="rules" :input-width="inputWidth" :advanced="advanced" :no-search="noSearch" :no-reset="noReset" :export-enabled="exportOptions_.enabled && exportOptions_.btnLocation === 'querybar'" :export-btn-code="exportOptions_.btnCode" @reset="onQueryBarReset">
       <template v-slot>
         <slot name="querybar" />
       </template>
@@ -42,20 +21,7 @@
     </querybar>
 
     <section class="nm-list-body">
-      <query-table
-        ref="table"
-        :rows="rows"
-        :cols="cols"
-        :span-method="spanMethod"
-        :selection="selection"
-        :row-key="rowKey"
-        :tree-props="treeProps"
-        :default-expand-all="defaultExpandAll"
-        :no-clear-selection="noClearSelection"
-        :show-summary="showSummary"
-        :sum-text="sumText"
-        :summary-method="summaryMethod"
-      >
+      <query-table ref="table" :rows="rows" :cols="cols" :span-method="spanMethod" :selection="selection" :row-key="rowKey" :tree-props="treeProps" :default-expand-all="defaultExpandAll" :no-clear-selection="noClearSelection" :show-summary="showSummary" :sum-text="sumText" :summary-method="summaryMethod">
         <!-- 多选 -->
         <el-table-column v-if="multiple" fixed="left" align="center" type="selection" width="55" />
 
@@ -73,18 +39,7 @@
 
         <!-- 自动生成列 -->
         <template v-for="(col, i) in columns">
-          <el-table-column
-            v-if="col.show"
-            :key="i"
-            :prop="col.name"
-            :width="col.width"
-            :sortable="col.sortable"
-            :type="col.type"
-            :fixed="col.fixed"
-            :align="col.align"
-            :header-align="col.headerAlign"
-            :show-overflow-tooltip="col.showOverflowTooltip"
-          >
+          <el-table-column v-if="col.show" :key="i" :prop="col.name" :width="col.width" :sortable="col.sortable" :type="col.type" :fixed="col.fixed" :align="col.align" :header-align="col.headerAlign" :show-overflow-tooltip="col.showOverflowTooltip">
             <!--自定义头-->
             <template v-slot:header>
               <slot :name="`col-${col.name}-header`">
@@ -114,16 +69,7 @@
     </section>
 
     <!--footer-->
-    <query-footer
-      v-if="!noFooter"
-      v-model="page"
-      :page-sizes="pageSizes"
-      :total="total"
-      :columns.sync="columns"
-      :no-select-column="noSelectColumn"
-      :no-search-button-icon="noSearchButtonIcon"
-      :reverse="footerReverse"
-    >
+    <query-footer v-if="!noFooter" v-model="page" :smallPagination="smallPagination" :showPager="showPager" :page-sizes="pageSizes" :total="total" :columns.sync="columns" :no-select-column="noSelectColumn" :no-search-button-icon="noSearchButtonIcon" :reverse="footerReverse">
       <slot name="footer" :total="total" :selection="selection" :data="data" />
     </query-footer>
     <slot />
@@ -152,7 +98,7 @@ export default {
       page: {
         index: 1,
         size: this.pageSizes[0],
-        sort: []
+        sort: [],
       },
       // 数据列表
       rows: [],
@@ -162,7 +108,7 @@ export default {
       total: 0,
       selection: [],
       showExport: false,
-      columns: []
+      columns: [],
     }
   },
   props: {
@@ -173,7 +119,7 @@ export default {
     // 查询方法
     action: {
       type: Function,
-      required: true
+      required: true,
     },
     /** 查询表单输入框宽度 */
     inputWidth: String,
@@ -188,14 +134,14 @@ export default {
       type: Array,
       default() {
         return []
-      }
+      },
     },
     /** 多选 */
     multiple: Boolean,
     /** 显示序号 */
     showNo: {
       type: Boolean,
-      default: true
+      default: true,
     },
     /** 不显示操作列 */
     noOperation: Boolean,
@@ -213,6 +159,10 @@ export default {
     noHeader: Boolean,
     /** 不显示底部 */
     noFooter: Boolean,
+    //是否使用小型分页样式
+    smallPagination: Boolean,
+    //是否禁用页码
+    showPager: Boolean,
     /** 不包含搜索功能 */
     noSearch: Boolean,
     /** 不显示查询按钮图标 */
@@ -230,7 +180,7 @@ export default {
     /** 创建后执行一次查询 */
     queryOnCreated: {
       type: Boolean,
-      default: true
+      default: true,
     },
     /**导出配置 */
     exportOptions: Object,
@@ -239,7 +189,7 @@ export default {
       type: Array,
       default() {
         return [10, 15, 50, 100]
-      }
+      },
     },
     /**渲染嵌套数据的配置选项 */
     treeProps: Object,
@@ -260,11 +210,11 @@ export default {
     /**合计行文本 */
     sumText: String,
     /**合计行自定义逻辑方法 */
-    summaryMethod: Function
+    summaryMethod: Function,
   },
   computed: {
     ...mapState('app/loading', { loadingText_: 'text', loadingBackground: 'background', loadingSpinner: 'spinner' }),
-    ...mapState('app/config', { serialNumberName: s => s.component.list.serialNumberName }),
+    ...mapState('app/config', { serialNumberName: (s) => s.component.list.serialNumberName }),
     class_() {
       return ['nm-list', this.fontSize ? `nm-list-${this.fontSize}` : '', this.fullscreen ? 'fullscreen' : '']
     },
@@ -276,7 +226,7 @@ export default {
     },
     exportAdvancedEnabled() {
       return this.exportOptions_.enabled && this.exportOptions_.advanced
-    }
+    },
   },
   methods: {
     /** 查询方法 */
@@ -301,7 +251,7 @@ export default {
       fullModel.page = this.page
 
       this.action(fullModel)
-        .then(data => {
+        .then((data) => {
           this.rows = data.rows
           this.total = data.total
           this.data = data.data
@@ -314,8 +264,8 @@ export default {
 
           if (this.noClearSelection) {
             this.$nextTick(() => {
-              this.rows.forEach(m => {
-                if (!this.selection.every(n => n.id !== m.id)) {
+              this.rows.forEach((m) => {
+                if (!this.selection.every((n) => n.id !== m.id)) {
                   this.$refs.table.toggleRowSelection(m, true)
                 }
               })
@@ -399,7 +349,7 @@ export default {
         model.fileName = `${this.title}_${this.$dayjs().format('YYYYMMDDHHmmss')}`
         model.columns = []
 
-        this.columns.forEach(m => {
+        this.columns.forEach((m) => {
           if (m.show) {
             model.columns.push(this.listCol2ExportCol(m))
           }
@@ -426,7 +376,7 @@ export default {
         label: m.label,
         align: m.align,
         format: m.format,
-        width: 0
+        width: 0,
       }
 
       //设置导出专属vip配置~
@@ -477,7 +427,7 @@ export default {
 
       //日期
       return this.$dayjs(val).format(col.format)
-    }
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -488,13 +438,13 @@ export default {
   },
   created() {
     if (this.cols) {
-      this.columns = this.cols.map(col => {
+      this.columns = this.cols.map((col) => {
         return this.$_.assignIn({}, def.columnInfo, col)
       })
     }
   },
   activated() {
     this.doLayout()
-  }
+  },
 }
 </script>

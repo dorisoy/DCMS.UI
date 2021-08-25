@@ -4,16 +4,8 @@
       <slot />
     </div>
     <div class="nm-list-footer-right">
-      <el-pagination
-        background
-        :current-page="value.index"
-        :page-size="value.size"
-        :total="total"
-        :page-sizes="pageSizes"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="onSizeChange"
-        @current-change="onIndexChange"
-      />
+      <el-pagination v-if="smallPagination" background :current-page="value.index" :page-size="value.size" :total="total" layout="prev, pager, next" @current-change="onIndexChange" />
+      <el-pagination v-else background :current-page="value.index" :page-size="value.size" :total="total" :page-sizes="pageSizes" layout="total, sizes, prev, pager, next, jumper" @size-change="onSizeChange" @current-change="onIndexChange" />
       <select-column v-if="!noSelectColumn" :columns="columns" @change="onSelectColumnChange" />
     </div>
   </footer>
@@ -26,8 +18,12 @@ export default {
     /** 分页信息 */
     value: {
       type: Object,
-      required: true
+      required: true,
     },
+    //是否使用小型分页样式
+    smallPagination: Boolean,
+    //是否禁用页码
+    showPager: Boolean,
     /** 总数 */
     total: Number,
     /** 列集合 */
@@ -41,8 +37,8 @@ export default {
       type: Array,
       default() {
         return [10, 15, 50, 100]
-      }
-    }
+      },
+    },
   },
   methods: {
     onSizeChange(size) {
@@ -61,7 +57,7 @@ export default {
     onSelectColumnChange() {
       // 重绘父组件的布局
       this.$parent.doLayout()
-    }
-  }
+    },
+  },
 }
 </script>
